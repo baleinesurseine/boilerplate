@@ -1,0 +1,8 @@
+## Todo list
+- **admin** : create an admin function / done
+  - admin option in user definition / done
+  - default admin login/password at init (done) and mandatory change / done
+  - admin functions : list users (done) and provide API for user activity management
+- **mailgun** : manage messages with mailgun / done
+  - store messages sent / done
+  - manage webhooks / done
