@@ -41,29 +41,18 @@ exports.hookPost = function (req, res, next) {
   var signature = req.body.signature + ''
 
   var load = timestamp + token
-
-  console.log(token)
-  console.log(timestamp)
-
   var hm = hmac.update(load).digest('hex')
-
-  console.log(signature + ' =? ' + hm)
-
   if (signature !== hm) {
     return res.status(403).end()
   }
 
   var messageToken = req.body['message-token']
   var messageEvent = req.body.event
-  var messageId = req.body['Message-Id']
-
-  console.log(messageToken)
-  console.log(messageEvent)
-  console.log(messageId)
+  // var messageId = req.body['Message-Id']
 
   Message.findOne({token: messageToken}, function (err, message) {
     if (err) {
-      console.log(err)
+      return next(err)
     }
     if (message) {
       if (messageEvent === 'delivered') {
@@ -80,7 +69,7 @@ exports.hookPost = function (req, res, next) {
       }
       message.save(function (err) {
         if (err) {
-          console.error(err)
+          return next(err)
         }
         console.log(message)
       })

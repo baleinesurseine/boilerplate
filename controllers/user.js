@@ -17,16 +17,13 @@ mailer.configure(
 )
 
 exports.usersGet = function (req, res) {
-  console.log('UsersGet')
   if (req.user) {
     if (!req.user.admin) {
       req.flash('error', {msg: 'Only allowed to admins'})
       return res.redirect('/')
     }
     var page = req.params.page
-    console.log('About to paginate ' + page)
     User.paginate({}, {page: page, limit: 10}, function (err, users) {
-      console.log('Paginate')
       if (err) {
         req.flash('error', {msg: 'Unexpected database error'})
         return res.redirect('/')

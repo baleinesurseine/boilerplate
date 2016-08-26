@@ -16,7 +16,6 @@ var helmet = require('helmet')
 
 // Load environment variables from .env file
 dotenv.config({path: './env/.env'})
-console.log(process.env)
 
 // Controllers
 var HomeController = require('./controllers/home')
