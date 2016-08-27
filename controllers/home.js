@@ -5,6 +5,7 @@
 exports.index = function (req, res) {
   res.render('home', {
     title: 'Home',
-    GA: process.env.GOOGLE_ANALYTICS
+    GA: process.env.GOOGLE_ANALYTICS,
+    GV: process.env.GOOGLE_VERIF
   })
 }

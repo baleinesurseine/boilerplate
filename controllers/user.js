@@ -38,7 +38,8 @@ exports.usersGet = function (req, res) {
         page: page,
         pages: users.pages,
         func: 'Users',
-        GA: process.env.GOOGLE_ANALYTICS
+        GA: process.env.GOOGLE_ANALYTICS,
+        GV: process.env.GOOGLE_VERIF
       })
     })
   } else {
@@ -66,7 +67,8 @@ exports.loginGet = function (req, res) {
   }
   res.render('account/login', {
     title: 'Log in',
-    GA: process.env.GOOGLE_ANALYTICS
+    GA: process.env.GOOGLE_ANALYTICS,
+    GV: process.env.GOOGLE_VERIF
   })
 }
 
@@ -123,7 +125,8 @@ exports.signupGet = function (req, res) {
   }
   res.render('account/signup', {
     title: 'Sign up',
-    GA: process.env.GOOGLE_ANALYTICS
+    GA: process.env.GOOGLE_ANALYTICS,
+    GV: process.env.GOOGLE_VERIF
   })
 }
 
@@ -259,7 +262,8 @@ exports.createAdmin = function (req, res, next) {
 exports.accountGet = function (req, res) {
   res.render('account/profile', {
     title: 'My Account',
-    GA: process.env.GOOGLE_ANALYTICS
+    GA: process.env.GOOGLE_ANALYTICS,
+    GV: process.env.GOOGLE_VERIF
   })
 }
 
@@ -418,7 +422,8 @@ exports.resendGet = function (req, res) {
   }
   res.render('account/resend', {
     title: 'Resend confirmation email',
-    GA: process.env.GOOGLE_ANALYTICS
+    GA: process.env.GOOGLE_ANALYTICS,
+    GV: process.env.GOOGLE_VERIF
   })
 }
 
@@ -513,7 +518,8 @@ exports.forgotGet = function (req, res) {
   }
   res.render('account/forgot', {
     title: 'Forgot Password',
-    GA: process.env.GOOGLE_ANALYTICS
+    GA: process.env.GOOGLE_ANALYTICS,
+    GV: process.env.GOOGLE_VERIF
   })
 }
 
@@ -620,7 +626,8 @@ exports.resetGet = function (req, res) {
     }
     res.render('account/reset', {
       title: 'Password Reset',
-      GA: process.env.GOOGLE_ANALYTICS
+      GA: process.env.GOOGLE_ANALYTICS,
+      GV: process.env.GOOGLE_VERIF
     })
   })
 }
