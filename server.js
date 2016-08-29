@@ -92,6 +92,12 @@ app.use(function (req, res, next) {
 })
 app.use(express.static(path.join(__dirname, 'public')))
 
+app.use(function (req, res, next) {
+  res.locals.GA = process.env.GOOGLE_ANALYTICS
+  res.locals.GV = process.env.GOOGLE_VERIF
+  next()
+})
+
 router.get('/', HomeController.index)
 router.get('/contact', contactController.contactGet)
 router.post('/contact', contactController.contactPost)

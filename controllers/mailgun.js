@@ -1,3 +1,4 @@
+'use strict'
 var nodemailer = require('nodemailer')
 var EmailTemplate = require('email-templates').EmailTemplate
 var path = require('path')

@@ -1,5 +1,4 @@
 'use strict'
-
 var async = require('async')
 var crypto = require('crypto')
 var passport = require('passport')
@@ -37,9 +36,7 @@ exports.usersGet = function (req, res) {
         uss: users.docs,
         page: page,
         pages: users.pages,
-        func: 'Users',
-        GA: process.env.GOOGLE_ANALYTICS,
-        GV: process.env.GOOGLE_VERIF
+        func: 'Users'
       })
     })
   } else {
@@ -66,9 +63,7 @@ exports.loginGet = function (req, res) {
     return res.redirect('/')
   }
   res.render('account/login', {
-    title: 'Log in',
-    GA: process.env.GOOGLE_ANALYTICS,
-    GV: process.env.GOOGLE_VERIF
+    title: 'Log in'
   })
 }
 
@@ -124,9 +119,7 @@ exports.signupGet = function (req, res) {
     return res.redirect('/')
   }
   res.render('account/signup', {
-    title: 'Sign up',
-    GA: process.env.GOOGLE_ANALYTICS,
-    GV: process.env.GOOGLE_VERIF
+    title: 'Sign up'
   })
 }
 
@@ -261,9 +254,7 @@ exports.createAdmin = function (req, res, next) {
 */
 exports.accountGet = function (req, res) {
   res.render('account/profile', {
-    title: 'My Account',
-    GA: process.env.GOOGLE_ANALYTICS,
-    GV: process.env.GOOGLE_VERIF
+    title: 'My Account'
   })
 }
 
@@ -421,9 +412,7 @@ exports.resendGet = function (req, res) {
     return res.redirect('/')
   }
   res.render('account/resend', {
-    title: 'Resend confirmation email',
-    GA: process.env.GOOGLE_ANALYTICS,
-    GV: process.env.GOOGLE_VERIF
+    title: 'Resend confirmation email'
   })
 }
 
@@ -517,9 +506,7 @@ exports.forgotGet = function (req, res) {
     return res.redirect('/')
   }
   res.render('account/forgot', {
-    title: 'Forgot Password',
-    GA: process.env.GOOGLE_ANALYTICS,
-    GV: process.env.GOOGLE_VERIF
+    title: 'Forgot Password'
   })
 }
 
@@ -625,9 +612,7 @@ exports.resetGet = function (req, res) {
       return res.redirect('/forgot')
     }
     res.render('account/reset', {
-      title: 'Password Reset',
-      GA: process.env.GOOGLE_ANALYTICS,
-      GV: process.env.GOOGLE_VERIF
+      title: 'Password Reset'
     })
   })
 }

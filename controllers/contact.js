@@ -14,9 +14,7 @@ var transporter = nodemailer.createTransport({
  */
 exports.contactGet = function (req, res) {
   res.render('contact', {
-    title: 'Contact',
-    GA: process.env.GOOGLE_ANALYTICS,
-    GV: process.env.GOOGLE_VERIF
+    title: 'Contact'
   })
 }
 

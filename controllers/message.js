@@ -24,9 +24,7 @@ exports.messageGet = function (req, res) {
         mess: messages.docs,
         page: page,
         pages: messages.pages,
-        func: 'Messages',
-        GA: process.env.GOOGLE_ANALYTICS,
-        GV: process.env.GOOGLE_VERIF
+        func: 'Messages'
       })
     })
   } else {
