@@ -32,6 +32,7 @@ exports.configure = function (config) {
   }
   if (config.directory) {
     directory = config.directory
+    templatesDir = path.resolve(__dirname, '..', directory)
   }
   transporter = nodemailer.createTransport({
     service: 'Mailgun',
@@ -40,7 +41,6 @@ exports.configure = function (config) {
       pass: password
     }
   })
-  templatesDir = path.resolve(__dirname, '..', directory)
 }
 
 exports.sendMail = function (to, from, data, token, template, cb) {
