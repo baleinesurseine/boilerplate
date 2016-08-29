@@ -17,9 +17,6 @@ var helmet = require('helmet')
 // Load environment variables from .env file
 dotenv.config({path: './env/.env'})
 
-// Controllers
-var HomeController = require('./controllers/home')
-
 // Passport OAuth strategies
 require('./config/passport')
 
@@ -95,8 +92,7 @@ app.use(function (req, res, next) {
   next()
 })
 
-router.get('/', HomeController.index)
-
+require('./routes/home')(router)
 require('./routes/user')(router)
 require('./routes/contact')(router)
 require('./routes/oauth')(router)
