@@ -226,13 +226,14 @@ exports.signupPost = function (req, res, next) {
 
 exports.createAdmin = function (req, res, next) {
   User.findOne({name: 'admin'}, function (err, user) {
+    console.log(user)
     if (err) {
       req.flash('error', {msg: 'Unexpected error during admin creation'})
-      return res.redirect('/')
+      return res.redirect('/login')
     }
     if (user && user.name === 'admin') {
       req.flash('error', {msg: 'The admin user already exists.'})
-      return res.redirect('/')
+      return res.redirect('/login')
     }
     User.collection.insert({ // bypass .pre middleware
       name: 'admin',
@@ -244,7 +245,8 @@ exports.createAdmin = function (req, res, next) {
       if (err) {
         req.flash('error', {msg: 'Unexpected error during saving'})
       }
-      res.redirect('/login')
+      req.flash('info', {msg: 'admin user created'})
+      return res.redirect('/login')
     })
   })
 }
