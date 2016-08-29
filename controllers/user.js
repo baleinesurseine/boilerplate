@@ -230,7 +230,7 @@ exports.createAdmin = function (req, res, next) {
       req.flash('error', {msg: 'Unexpected error during admin creation'})
       return res.redirect('/')
     }
-    if (user) {
+    if (user && user.name === 'admin') {
       req.flash('error', {msg: 'The admin user already exists.'})
       return res.redirect('/')
     }
