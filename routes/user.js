@@ -18,5 +18,5 @@ module.exports = function (router) {
   router.get('/logout', userController.logout)
   router.get('/unlink/:provider', userController.ensureAuthenticated, userController.unlink)
   router.get('/users/:page', userController.usersGet)
-  router.get('/createAdmin', userController.createAdmin)
+  // router.get('/createAdmin', userController.createAdmin)
 }

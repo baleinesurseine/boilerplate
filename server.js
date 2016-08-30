@@ -56,6 +56,8 @@ process.on('SIGINT', function () {
   })
 })
 
+require('./createAdmin')
+
 // view engine setup
 nunjucks.configure('views', {
   autoescape: true,
