@@ -130,7 +130,7 @@ app.use(function (err, req, res, next) {
     return next()
   }
   res.render('404', {
-    title: 'Ressource not found',
+    title: 'Page not found',
     url: req.url
   })
 })
