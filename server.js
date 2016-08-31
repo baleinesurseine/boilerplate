@@ -105,7 +105,7 @@ app.use(router)
 
 app.get('/track', function (req, res, next) {
   console.log(req)
-  process.nextTick(function (req) {
+  process.nextTick(function () {
     // tracking operations
     console.log(req)
   })
