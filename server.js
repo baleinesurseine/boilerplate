@@ -111,7 +111,11 @@ app.get('/track', function (req, res, next) {
     var forwardedIpsStr = req.header('x-forwarded-for')
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     var agent = uaparser.parse(req.headers['user-agent'])
-  }
+    
+    console.log(agent)
+    console.log(ip)
+    console.log(token)
+  })
   return res.status(204).send()
 })
 
