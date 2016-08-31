@@ -104,10 +104,14 @@ require('./routes/message')(router)
 app.use(router)
 
 app.get('/track', function (req, res, next) {
-  console.log(req)
   process.nextTick(function () {
     // tracking operations
-    console.log(req)
+    var qu = req && req.query
+    var token = qu && qu.token
+    var ip = req && req.headers['X-Real-IP'] || req.connection.remoteAddress
+    console.log('query: ' + qu)
+    console.log('token: ' + token)
+    console.log('ip: ' + ip)
   })
   return res.status(204).send()
 })
