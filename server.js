@@ -13,6 +13,7 @@ var nunjucks = require('nunjucks') // templating engine
 var mongoose = require('mongoose')
 var passport = require('passport') // authentication middleware
 var helmet = require('helmet')
+var uaparser = require('ua-parser')
 
 // Load environment variables from .env file
 dotenv.config({path: './env/.env'})
@@ -105,7 +106,12 @@ app.use(router)
 app.get('/track', function (req, res, next) {
   process.nextTick(function (req) {
     // tracking operations
-  })
+    var qu = req.quey
+    var token = qu.token // http://url/track?token='token'
+    var forwardedIpsStr = req.header('x-forwarded-for')
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    var agent = uaparser.parse(req.headers['user-agent'])
+  }
   return res.status(204).send()
 })
 
