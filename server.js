@@ -104,6 +104,7 @@ require('./routes/message')(router)
 app.use(router)
 
 app.get('/track', function (req, res, next) {
+  console.log(req)
   process.nextTick(function (req) {
     // tracking operations
     console.log(req)
