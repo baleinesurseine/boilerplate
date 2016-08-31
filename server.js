@@ -106,15 +106,7 @@ app.use(router)
 app.get('/track', function (req, res, next) {
   process.nextTick(function (req) {
     // tracking operations
-    var qu = req.query
-    var token = qu.token // http://url/track?token='token'
-    var forwardedIpsStr = req.header('x-forwarded-for')
-    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    var agent = uaparser.parse(req.headers['user-agent'])
-    
-    console.log(agent)
-    console.log(ip)
-    console.log(token)
+    console.log(req)
   })
   return res.status(204).send()
 })
