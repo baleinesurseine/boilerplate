@@ -102,6 +102,13 @@ require('./routes/message')(router)
 
 app.use(router)
 
+app.get('/track', function (req, res, next) {
+  process.nextTick(function (req) {
+    // tracking operations
+  })
+  return res.status(204).send()
+})
+
 app.get('*', function (req, res, next) {
   var err = new Error()
   err.status = 404
