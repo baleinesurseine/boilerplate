@@ -109,9 +109,13 @@ app.get('/track', function (req, res, next) {
     var qu = req && req.query
     var token = qu && qu.token
     var ip = req && req.headers['X-Real-IP'] || req.connection.remoteAddress
-    console.log('query: ' + qu)
+    var ua = req && uaparser.parse(req.headers['user-agent'])
+    console.log('query: ' + qu.toString())
     console.log('token: ' + token)
     console.log('ip: ' + ip)
+    console.log('browser: ' + ua.ua.toString())
+    console.log('OS: ' + ua.os.toString())
+    console.log('device: ' + ua.device.toString())
   })
   return res.status(204).send()
 })
