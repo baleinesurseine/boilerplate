@@ -6,3 +6,4 @@
 - **mailgun** : manage messages with mailgun / done
   - store messages sent / done
   - manage webhooks / done
+  - models/Messages.js : manage message events as objects in database
