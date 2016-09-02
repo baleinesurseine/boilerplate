@@ -10,7 +10,7 @@ var messageEventSchema = new mongoose.Schema({
   messageToken: String,
   time: Date,
   event: String
-}, SchemaOptions)
+}, schemaOptions)
 
 var MessageEvent = mongoose.model('MessageEvent', messageEventSchema)
 
