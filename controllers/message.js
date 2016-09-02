@@ -1,6 +1,7 @@
 'use strict'
 
 var Message = require('../models/Message')
+var MessageEvent = require('../models/MessageEvent')
 var crypto = require('crypto')
 
 exports.messageGet = function (req, res) {
@@ -54,23 +55,33 @@ exports.hookPost = function (req, res, next) {
       return next(err)
     }
     if (message) {
-      if (messageEvent === 'delivered') {
-        message.serverStatus = 'delivered'
-      }
-      if (messageEvent === 'opened') {
-        message.clientStatus = 'opened'
-      }
-      if (messageEvent === 'bounced') {
-        message.clientStatus = 'bounced'
-      }
-      if (messageEvent === 'complained') {
-        message.clientStatus = 'spam complained'
-      }
-      message.save(function (err) {
-        if (err) {
+      var event = new MessageEvent()
+      event.time = Date()
+      event.messageToken = messageToken
+      event.event = messageEvent
+      event.save(function (err) {
+        if(err) {
           return next(err)
         }
-        console.log(message)
+
+        if (messageEvent === 'delivered') {
+          message.serverStatus = 'delivered'
+        }
+        if (messageEvent === 'opened') {
+          message.clientStatus = 'opened'
+        }
+        if (messageEvent === 'bounced') {
+          message.clientStatus = 'bounced'
+        }
+        if (messageEvent === 'complained') {
+          message.clientStatus = 'spam complained'
+        }
+        message.save(function (err) {
+          if (err) {
+            return next(err)
+          }
+          console.log(message)
+        })
       })
     }
   })
