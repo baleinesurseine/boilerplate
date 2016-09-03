@@ -14,6 +14,7 @@ var mongoose = require('mongoose')
 var passport = require('passport') // authentication middleware
 var helmet = require('helmet')
 var uaparser = require('ua-parser')
+var sanitize = require('mongo-sanitize')
 
 // Load environment variables from .env file
 dotenv.config({path: './env/.env'})
@@ -93,6 +94,11 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(function (req, res, next) {
   res.locals.GA = process.env.GOOGLE_ANALYTICS
   res.locals.GV = process.env.GOOGLE_VERIF
+  next()
+})
+
+app.use(function (req, res, next) {
+  req.body = sanitize(req.body)
   next()
 })
 
