@@ -4,7 +4,7 @@
 .gitignore
 node_modules/
 Dockerfile
-.eslintrc
+.eslintrc.js
 dump.rdb
 TODO
 env/

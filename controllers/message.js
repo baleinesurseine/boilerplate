@@ -60,7 +60,7 @@ exports.hookPost = function (req, res, next) {
       event.messageToken = messageToken
       event.event = messageEvent
       event.save(function (err) {
-        if(err) {
+        if (err) {
           return next(err)
         }
 

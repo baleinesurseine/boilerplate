@@ -223,33 +223,6 @@ exports.signupPost = function (req, res, next) {
     })
   })
 }
-//
-// exports.createAdmin = function (req, res, next) {
-//   User.findOne({name: 'admin'}, function (err, user) {
-//     console.log(user)
-//     if (err) {
-//       req.flash('error', {msg: 'Unexpected error during admin creation'})
-//       return res.redirect('/login')
-//     }
-//     if (user && user.name === 'admin') {
-//       req.flash('error', {msg: 'The admin user already exists.'})
-//       return res.redirect('/login')
-//     }
-//     User.collection.insert({ // bypass .pre middleware
-//       name: 'admin',
-//       email: process.env.ADMIN_EMAIL,
-//       password: process.env.ADMIN_PASSWD, // hashed password
-//       admin: true,
-//       emailConfirmed: true
-//     }, function (err, users) {
-//       if (err) {
-//         req.flash('error', {msg: 'Unexpected error during saving'})
-//       }
-//       req.flash('info', {msg: 'admin user created'})
-//       return res.redirect('/login')
-//     })
-//   })
-// }
 
 /**
 * GET /account
