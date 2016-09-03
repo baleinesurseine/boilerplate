@@ -14,7 +14,7 @@ var mongoose = require('mongoose')
 var passport = require('passport') // authentication middleware
 var helmet = require('helmet')
 var uaparser = require('ua-parser')
-var sanitize = require('mongo-sanitize')
+// var sanitize = require('mongo-sanitize')
 
 // Load environment variables from .env file
 dotenv.config({path: './env/.env'})
@@ -97,10 +97,10 @@ app.use(function (req, res, next) {
   next()
 })
 
-app.use(function (req, res, next) {
-  req.body = sanitize(req.body)
-  next()
-})
+// app.use(function (req, res, next) {
+//   req.body = sanitize(req.body)
+//   next()
+// })
 
 require('./routes/home')(router)
 require('./routes/user')(router)
