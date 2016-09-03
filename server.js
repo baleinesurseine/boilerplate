@@ -23,6 +23,7 @@ require('./config/passport')
 
 var app = express()
 app.use(helmet())
+app.use(helmet.hidePoweredBy())
 
 var client = require('redis').createClient({host: 'redis'})
 var limiter = require('express-limiter')(app, client)
@@ -76,7 +77,7 @@ app.use(methodOverride('_method'))
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: true,
-  cookie: { maxAge: 1000 * 60 * 60 }, // 1 hour
+  cookie: { secure: true, httpOnly: true, maxAge: 1000 * 60 * 60 }, // 1 hour
   saveUninitialized: true,
   store: new MongoStore({mongooseConnection: mongoose.connection})
 }))
