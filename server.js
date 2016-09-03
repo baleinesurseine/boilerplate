@@ -78,7 +78,7 @@ app.use(methodOverride('_method'))
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: true,
-  cookie: { secure: true, httpOnly: true, maxAge: 1000 * 60 * 60 }, // 1 hour
+  cookie: { maxAge: 1000 * 60 * 60 }, // 1 hour
   saveUninitialized: true,
   store: new MongoStore({mongooseConnection: mongoose.connection})
 }))
