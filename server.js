@@ -14,7 +14,7 @@ var mongoose = require('mongoose')
 var passport = require('passport') // authentication middleware
 var helmet = require('helmet')
 var uaparser = require('ua-parser')
-// var sanitize = require('mongo-sanitize')
+var sanitize = require('mongo-sanitize')
 
 // Load environment variables from .env file
 dotenv.config({path: './env/.env'})
@@ -78,7 +78,7 @@ app.use(methodOverride('_method'))
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: true,
-  cookie: { maxAge: 1000 * 60 * 60 }, // 1 hour
+  cookie: { httpOnly: true, maxAge: 1000 * 60 * 60 }, // 1 hour
   saveUninitialized: true,
   store: new MongoStore({mongooseConnection: mongoose.connection})
 }))
@@ -97,10 +97,10 @@ app.use(function (req, res, next) {
   next()
 })
 
-// app.use(function (req, res, next) {
-//   req.body = sanitize(req.body)
-//   next()
-// })
+app.use(function (req, res, next) {
+  req.body = sanitize(req.body)
+  next()
+})
 
 require('./routes/home')(router)
 require('./routes/user')(router)
