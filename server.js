@@ -13,7 +13,6 @@ var nunjucks = require('nunjucks') // templating engine
 var mongoose = require('mongoose')
 var passport = require('passport') // authentication middleware
 var helmet = require('helmet')
-var uaparser = require('ua-parser')
 var sanitize = require('mongo-sanitize')
 
 // Load environment variables from .env file
@@ -110,23 +109,6 @@ require('./routes/oauth')(router)
 require('./routes/message')(router)
 
 app.use(router)
-
-app.get('/track', function (req, res, next) {
-  process.nextTick(function () {
-    // tracking operations
-    var qu = req && req.query
-    var token = qu && qu.token
-    var ip = req && req.headers['X-Real-IP'] || req.connection.remoteAddress
-    var ua = req && uaparser.parse(req.headers['user-agent'])
-    console.log('query: ' + qu.toString())
-    console.log('token: ' + token)
-    console.log('ip: ' + ip)
-    console.log('browser: ' + ua.ua.toString())
-    console.log('OS: ' + ua.os.toString())
-    console.log('device: ' + ua.device.toString())
-  })
-  return res.status(204).send()
-})
 
 app.get('*', function (req, res, next) {
   var err = new Error()
