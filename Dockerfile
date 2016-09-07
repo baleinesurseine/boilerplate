@@ -1,4 +1,6 @@
-FROM node:6
+#FROM node:6
+FROM mhart/alpine-node:6
+
 MAINTAINER Edouard Fischer <edouard.fischer@gmail.com>
 
 RUN groupadd -r boilerplate && useradd -r -g boilerplate boilerplate
