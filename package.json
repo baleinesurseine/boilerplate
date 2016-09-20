@@ -19,7 +19,6 @@
     "express-limiter": "^1.6.0",
     "express-session": "^1.2.1",
     "express-validator": "^2.20.4",
-    "express-ws": "^2.0.0",
     "helmet": "^2.1.2",
     "method-override": "^2.3.5",
     "mongo-sanitize": "^1.0.0",

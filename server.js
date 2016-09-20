@@ -1,5 +1,4 @@
 var express = require('express')
-var expressWs = require('express-ws')
 var path = require('path')
 var logger = require('morgan')
 var compression = require('compression')
@@ -23,7 +22,6 @@ dotenv.config({path: './env/.env'})
 require('./config/passport')
 
 var app = express()
-expressWs(app)
 
 app.use(helmet())
 app.use(helmet.hidePoweredBy())
@@ -110,7 +108,6 @@ require('./routes/user')(router)
 require('./routes/contact')(router)
 require('./routes/oauth')(router)
 require('./routes/message')(router)
-require('./routes/xterm')(router)
 
 app.use(router)
 

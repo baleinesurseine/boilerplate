@@ -13,7 +13,6 @@
       <ul class="nav navbar-nav">
         <li class="{% if title == 'Home' %}active{% endif %}"><a href="/">Home</a></li>
         <li class="{% if title == 'Contact' %}active{% endif %}"><a href="/contact">Contact</a></li>
-        <li class="{% if title == 'Xterm' %}active{% endif %}"><a href="/xterm">Xterm</a></li>
         {% if user.admin == true %}
         <li class="{% if title == 'Admin' %}active{% endif %}"><a href="/list/1">Admin</a></li>
         {% endif %}
