@@ -1,9 +1,7 @@
-#FROM node:6
 FROM mhart/alpine-node:6
 
 MAINTAINER Edouard Fischer <edouard.fischer@gmail.com>
 
-#RUN groupadd -r boilerplate && useradd -r -g boilerplate boilerplate
 RUN addgroup boilerplate && adduser -D -H -G boilerplate boilerplate
 
 # Create app directory

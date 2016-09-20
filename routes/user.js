@@ -17,5 +17,5 @@ module.exports = function (router) {
   router.get('/confirm/:token', userController.confirmGet)
   router.get('/logout', userController.logout)
   router.get('/unlink/:provider', userController.ensureAuthenticated, userController.unlink)
-  router.get('/users/:page', userController.usersGet)
+  router.get('/users/:page', userController.ensureAuthenticated, userController.usersGet)
 }
